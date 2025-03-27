@@ -1,1 +1,13 @@
-spring.application.name=transaction
+spring:
+  cloud:
+    stream:
+      kafka:
+        binder:
+          configuration:
+            auto:
+              offset:
+                reset: earliest
+      bindings:
+        poll-in-0:
+          destination: transaction-topic
+          group: transaction-group
