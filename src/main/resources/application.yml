@@ -7,6 +7,14 @@ spring:
             auto:
               offset:
                 reset: earliest
+            enableDlq: true
+            enableAutoCommit: false
+            dlqName: transaction-dlq
+            backoffInterval: 1000
+            backoffMaxInterval: 10000
+            backoffMultiplier: 2
+            maxAttempts: 3
+            isolationLevel: read_committed
       bindings:
         poll-in-0:
           destination: transaction-topic
